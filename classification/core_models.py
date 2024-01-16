@@ -222,7 +222,7 @@ class NewsClassificationModel:
 
         self.evaluation_model(name_model=name_model, classifier=best_clf, train_time=train_time, fine_turning=True)
 
-    def models_naive_bayes(self):
+    def model_naive_bayes(self):
         text_clf = Pipeline([('vect', CountVectorizer(ngram_range=(1, 1),
                                                       max_df=0.8,
                                                       max_features=None)),
@@ -231,7 +231,7 @@ class NewsClassificationModel:
                              ])
         self.core_models('Naive Bayes', text_clf)
 
-    def models_naive_bayes_hyperparams(self):
+    def model_naive_bayes_hyperparams(self):
         text_clf = Pipeline([('vect', CountVectorizer()),
                              ('clf', MultinomialNB())
                              ])
