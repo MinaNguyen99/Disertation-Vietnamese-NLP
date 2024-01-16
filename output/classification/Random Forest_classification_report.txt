@@ -1,0 +1,21 @@
+Best Random Forest Training Time: 507.115638256073 seconds
+
+Best Random Forest, Accuracy =0.9023030303030303
+Classification Report:
+                         precision    recall  f1-score   support
+
+            Automobiles       0.95      0.96      0.95      1478
+Culture - Entertainment       0.86      0.84      0.85      1519
+      Economy - Finance       0.84      0.73      0.78      1498
+              Education       0.88      0.87      0.87      1485
+                    Law       0.91      0.93      0.92      1488
+       National Defense       0.94      0.98      0.96      1476
+               Politics       0.88      0.95      0.91      1531
+            Real Estate       0.92      0.97      0.94      1496
+                  Sport       0.98      0.97      0.97      1502
+             Technology       0.89      0.89      0.89      1500
+                  World       0.87      0.83      0.85      1527
+
+               accuracy                           0.90     16500
+              macro avg       0.90      0.90      0.90     16500
+           weighted avg       0.90      0.90      0.90     16500
