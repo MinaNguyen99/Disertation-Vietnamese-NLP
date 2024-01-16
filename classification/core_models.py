@@ -279,6 +279,19 @@ class NewsClassificationModel:
                              ])
         self.core_models('SVM', text_clf)
 
+    def model_svm_hyperparams(self):
+
+        text_clf = Pipeline([('vect', CountVectorizer(ngram_range=(1, 1),
+                                                      max_df=0.8,
+                                                      max_features=None)),
+                             ('tfidf', TfidfTransformer()),
+                             ('clf', SVC(probability=True))
+                             ])
+        param_grid = {
+            'clf__gamma': ['auto', 'scale']
+        }
+        self.core_models_hyperparams('SVM', text_clf, param_grid)
+
     def model_decisiontree(self):
         text_clf = Pipeline([('vect', CountVectorizer(ngram_range=(1, 1),
                                                       max_df=0.8,
@@ -324,11 +337,7 @@ class NewsClassificationModel:
 
         # Define the parameter grid
         param_grid = {
-            'clf__n_estimators': [100, 150],
-            'clf__max_depth': [None, 50, 100, 150],
-            'clf__min_samples_split': [2, 5, 7],
-            'clf__min_samples_leaf': [1, 2, 4],
-            'clf__bootstrap': [True, False]
+            'clf__max_depth': [None, 50, 100, 150]
         }
         self.core_models_hyperparams('Random Forest', text_clf, param_grid)
 
@@ -351,4 +360,3 @@ class NewsClassificationModel:
             ('classifier', XGBClassifier())
         ])
         self.core_models('XGBoost', text_clf)
-
