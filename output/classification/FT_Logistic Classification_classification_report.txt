@@ -1,0 +1,21 @@
+Best Logistic Classification Training Time: 2647.5362932682037 seconds
+
+Best Logistic Classification, Accuracy =0.9048484848484849
+Classification Report:
+                         precision    recall  f1-score   support
+
+            Automobiles       0.93      0.96      0.95      1478
+Culture - Entertainment       0.89      0.84      0.86      1519
+      Economy - Finance       0.83      0.75      0.79      1498
+              Education       0.86      0.89      0.88      1485
+                    Law       0.95      0.92      0.93      1488
+       National Defense       0.91      0.99      0.95      1476
+               Politics       0.92      0.94      0.93      1531
+            Real Estate       0.90      0.97      0.94      1496
+                  Sport       0.98      0.98      0.98      1502
+             Technology       0.90      0.91      0.90      1500
+                  World       0.87      0.80      0.83      1527
+
+               accuracy                           0.90     16500
+              macro avg       0.90      0.91      0.90     16500
+           weighted avg       0.90      0.90      0.90     16500

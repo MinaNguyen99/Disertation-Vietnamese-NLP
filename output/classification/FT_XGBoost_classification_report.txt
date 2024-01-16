@@ -1,0 +1,21 @@
+Best XGBoost Training Time: 888.433648109436 seconds
+
+Best XGBoost, Accuracy =0.9063030303030303
+Classification Report:
+                         precision    recall  f1-score   support
+
+            Automobiles       0.93      0.97      0.95      1478
+Culture - Entertainment       0.88      0.86      0.87      1519
+      Economy - Finance       0.85      0.76      0.80      1498
+              Education       0.90      0.86      0.88      1485
+                    Law       0.95      0.94      0.94      1488
+       National Defense       0.90      0.99      0.94      1476
+               Politics       0.91      0.93      0.92      1531
+            Real Estate       0.91      0.98      0.95      1496
+                  Sport       0.98      0.97      0.98      1502
+             Technology       0.86      0.90      0.88      1500
+                  World       0.89      0.80      0.84      1527
+
+               accuracy                           0.91     16500
+              macro avg       0.91      0.91      0.91     16500
+           weighted avg       0.91      0.91      0.91     16500

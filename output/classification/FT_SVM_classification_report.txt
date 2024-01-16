@@ -1,0 +1,21 @@
+Best SVM Training Time: 6376.373535394669 seconds
+
+Best SVM, Accuracy =0.9125454545454545
+Classification Report:
+                         precision    recall  f1-score   support
+
+            Automobiles       0.93      0.97      0.95      1478
+Culture - Entertainment       0.89      0.89      0.89      1519
+      Economy - Finance       0.85      0.75      0.80      1498
+              Education       0.89      0.90      0.90      1485
+                    Law       0.96      0.91      0.93      1488
+       National Defense       0.92      0.98      0.95      1476
+               Politics       0.92      0.92      0.92      1531
+            Real Estate       0.91      0.99      0.95      1496
+                  Sport       0.98      0.97      0.98      1502
+             Technology       0.90      0.91      0.91      1500
+                  World       0.88      0.84      0.86      1527
+
+               accuracy                           0.91     16500
+              macro avg       0.91      0.91      0.91     16500
+           weighted avg       0.91      0.91      0.91     16500

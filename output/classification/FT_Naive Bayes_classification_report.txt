@@ -1,0 +1,21 @@
+Best Naive Bayes Training Time: 1886.9083676338196 seconds
+
+Best Naive Bayes, Accuracy =0.8995151515151515
+Classification Report:
+                         precision    recall  f1-score   support
+
+            Automobiles       0.96      0.93      0.94      1478
+Culture - Entertainment       0.84      0.87      0.85      1519
+      Economy - Finance       0.81      0.79      0.80      1498
+              Education       0.90      0.84      0.87      1485
+                    Law       0.94      0.92      0.93      1488
+       National Defense       0.93      0.95      0.94      1476
+               Politics       0.86      0.92      0.89      1531
+            Real Estate       0.94      0.98      0.96      1496
+                  Sport       0.99      0.98      0.98      1502
+             Technology       0.89      0.90      0.90      1500
+                  World       0.85      0.82      0.84      1527
+
+               accuracy                           0.90     16500
+              macro avg       0.90      0.90      0.90     16500
+           weighted avg       0.90      0.90      0.90     16500
