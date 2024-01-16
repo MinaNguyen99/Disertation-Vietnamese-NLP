@@ -1,0 +1,1 @@
+{'clf__alpha': 0, 'vect__max_df': 0.7, 'vect__max_features': None, 'vect__ngram_range': (1, 1), 'vect__token_pattern': '\\w{1,}'}

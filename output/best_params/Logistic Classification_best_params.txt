@@ -1,0 +1,1 @@
+{'clf__C': 0.1, 'clf__penalty': 'l2', 'vect__max_features': None, 'vect__token_pattern': '\\w{1,}'}
