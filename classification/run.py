@@ -1,7 +1,10 @@
 from core_models import NewsClassificationModel
 from core.preprocess_nlp import PreprocessingNLP
 from core.standardization import VietnameseConverter
-from underthesea import word_tokenize
+from tokenizers import Tokenizer
+from tokenizers.models import BPE
+import py_vncorenlp
+from transformers import AutoTokenizer
 import time
 import pandas as pd
 import os
@@ -15,7 +18,7 @@ class VietnameseNewsClassification:
 
     def load_and_group_data(self, file_path='Fixed_news_dataset.csv'):
         # Load the data and drop rows with missing 'content'
-        data = pd.read_csv(file_path)
+        data = pd.read_csv(file_path).iloc[:1000]
         data.dropna(subset=['content'], inplace=True)
 
         # Filter out necessary columns
@@ -49,7 +52,7 @@ class VietnameseNewsClassification:
 
     def retrieve_data(self):
         if self.data is None:
-            output_folder = '/home/sotatek/PycharmProjects/disertation_nlp/output'
+            output_folder = '/home/hamy/PycharmProjects/Disertation-Vietnamese-NLP/output'
             cleaned_filename = os.path.join(output_folder, f"cleaned_data.csv")
             self.data = pd.read_csv(cleaned_filename)
             self.data.dropna(subset=['content'], inplace=True)
@@ -63,6 +66,11 @@ class VietnameseNewsClassification:
         filtered_data = self.data
         stopword = PreprocessingNLP().get_stopwords()
         text_converter = VietnameseConverter()
+        # using this for word segment
+        rdrsegmenter = py_vncorenlp.VnCoreNLP(annotators=["wseg"],
+                                              save_dir='/home/hamy/PycharmProjects/Disertation-Vietnamese-NLP/segmentnlp/')
+        # using phoBert for word segment
+        tokenizer = AutoTokenizer.from_pretrained("vinai/phobert-base")
         start_time = time.time()
 
         for index, row in filtered_data.iterrows():
@@ -71,15 +79,19 @@ class VietnameseNewsClassification:
             sentence.standard_unicode()
             sentence.remove_html()
             sentence.sentences = text_converter.standardize_vietnamese_tones_in_sentence(sentence.sentences)
-            sentence.sentences = word_tokenize(sentence.sentences, format="text")
+
             sentence.standardisation_case_type()
             sentence.remove_unnecessary_space()
             sentence.remove_stopword()
-            filtered_data.loc[index]['content'] = sentence.sentences
+            # word segment by py_vncorenlp
+            sentence.sentences = ''.join(rdrsegmenter.word_segment(sentence.sentences))
+            # word tokenizer by PhoBert
+            sentence.sentences = ' '.join(tokenizer.tokenize(sentence.sentences))
+            filtered_data.loc[index, 'content'] = sentence.sentences
 
         run_time = time.time() - start_time
         print('Processing step runtime: ', run_time)
-        output_folder = '/home/sotatek/PycharmProjects/disertation_nlp/output'
+        output_folder = '/home/hamy/PycharmProjects/Disertation-Vietnamese-NLP/output/'
         cleaned_filename = os.path.join(output_folder, f"cleaned_data.csv")
         filtered_data.to_csv(cleaned_filename, sep=',')
         self.data = filtered_data
@@ -107,11 +119,11 @@ class VietnameseNewsClassification:
         model.model_decisiontree_hyperparams()
         model.model_xgboost_hyperparams()
 
-"""
-Usage:
+
 run_all = VietnameseNewsClassification()
 run_all.load_and_group_data() # this is for loading and grouping
-run_all.run_preprocesing() # this is for preprocessing 
+run_all.run_preprocesing() # this is for preprocessing
+"""
 run_all.drop_topics()  # this is for drop records 
 model = run_all.prepare_model()  # this is for balancing, test train split  
 run_all.run_model(model) # This is for run example models

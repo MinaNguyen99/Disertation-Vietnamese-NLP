@@ -26,13 +26,13 @@ import numpy as np
 import time
 import pandas as pd
 from xgboost import XGBClassifier
-import optuna
+
 import os
 from itertools import cycle
 
 
 class NewsClassificationModel:
-    OUTPUT_FOLDER = '/home/sotatek/PycharmProjects/disertation_nlp/output'
+    OUTPUT_FOLDER = '/home/hamy/PycharmProjects/Disertation-Vietnamese-NLP/output'
     CONFUSION_MATRIX_PATH = os.path.join(OUTPUT_FOLDER, 'confusion_matrix')
     ROC_PATH = os.path.join(OUTPUT_FOLDER, 'roc')
     CLASSIFICATION_PATH = os.path.join(OUTPUT_FOLDER, 'classification')
